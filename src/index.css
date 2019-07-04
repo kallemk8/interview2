@@ -11,3 +11,12 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+.dataTables_info{
+  display: none;
+}
+.dataTables_paginate {
+  display: none
+}
+.advancesearch{
+  font-size: 22px;
+}
