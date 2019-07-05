@@ -54,6 +54,31 @@ class App extends Component {
     this.setState({currentpage:p});
     this.setState({seletedproducts:this.state.products.slice(0,totalval)});
   }
+  pricerangefilter(value){
+    var sdf = parseInt(value);
+    console.log(sdf);
+    var array = [];
+    this.state.products.map((pro,i)=>{
+      if(pro.price<sdf){
+        array.push(pro);
+        console.log("99");
+      }
+      if(pro.price<sdf && pro.price>99){
+        array.push(pro);
+        console.log("199");
+      }
+      if(pro.price<sdf  && pro.price>199){ 
+        array.push(pro);
+        console.log("399");
+      }
+      if(pro.price<sdf  && pro.price>399){
+        array.push(pro);
+        console.log("nter");
+      }
+    });
+    console.log(array);
+    this.setState({seletedproducts:array});
+  }
   render() {
   return (
     <div className="container">
@@ -63,12 +88,12 @@ class App extends Component {
           <div className="advancesearch">
             Advance Search
           </div>
-          <ul>
-            <li><input type="radio" name="advancesearch" value="1"/>1 - 99</li>
-            <li><input type="radio" name="advancesearch" value="2"/>100- 199</li>
-            <li><input type="radio" name="advancesearch" value="3"/>200 - 499</li>
-            <li><input type="radio" name="advancesearch" value="4"/>500 - above</li>
-          </ul>
+          <select className="from-control" onChange={(e)=>this.pricerangefilter(e.target.value)}>
+            <option value="99">1 - 99</option>
+            <option value="199">100 - 199</option>
+            <option value="399">200 - 399</option>
+            <option value="399">400 - Above</option>
+          </select>
         </div>
         <div className="col-md-12">
           <table className="table" id="id">
